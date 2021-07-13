@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public abstract class FlightReservationBase {
     private int seatCapacity;
-    private boolean[] steas;
+    private boolean[] seats;
 
     public void setReservation(String message){
         Scanner scanner = new Scanner(System.in);
@@ -56,9 +56,9 @@ public abstract class FlightReservationBase {
                 userInputSelectedSeat = scanner.nextInt();
 
                 if (userInputBusinessOrEconomy == 0){
-                   userInputIsSeatCorrect = checkBusinessSeat(userInputSelectedSeat-1);
+                    userInputIsSeatCorrect = checkBusinessSeat(userInputSelectedSeat-1);
                 }else {
-                   userInputIsSeatCorrect = checkEconomySeat(userInputSelectedSeat-1);
+                    userInputIsSeatCorrect = checkEconomySeat(userInputSelectedSeat-1);
                 }
 
                 if (!userInputIsSeatCorrect){
@@ -82,9 +82,9 @@ public abstract class FlightReservationBase {
         List<Integer> businessSeats = getBusinessStatus();
         boolean userInputIsSeatCorrect = true;
         for (int i = 0; i < businessSeats.size(); i++) {
-             if (businessSeats.get(i) == userInputSelectedSeat){
-                 userInputIsSeatCorrect = false;
-             }
+            if (businessSeats.get(i) == userInputSelectedSeat){
+                userInputIsSeatCorrect = false;
+            }
         }
         return userInputIsSeatCorrect;
     }
@@ -103,8 +103,8 @@ public abstract class FlightReservationBase {
 
     public List<Integer> getEconomyStatus(){
         List<Integer> economyStatus = new ArrayList<>();
-        for(int i = 5 ; i < steas.length ; i++){
-            if (steas[i])
+        for(int i = 5 ; i < seats.length ; i++){
+            if (seats[i])
                 economyStatus.add(i);
         }
         return economyStatus;
@@ -113,7 +113,7 @@ public abstract class FlightReservationBase {
     public List<Integer> getBusinessStatus(){
         List<Integer> businessStatus = new ArrayList<>();
         for (int i = 0 ; i <= 4 ;i++){
-            if (steas[i]){
+            if (seats[i]){
                 businessStatus.add(i);
             }
         }
@@ -122,8 +122,8 @@ public abstract class FlightReservationBase {
 
     public boolean getAirplaneStatus(){
         boolean status = false;
-        for (int i = 0 ; i < steas.length ;i++){
-            if (steas[i]){
+        for (int i = 0 ; i < seats.length ;i++){
+            if (seats[i]){
                 status = true;
             }
         }
@@ -147,11 +147,11 @@ public abstract class FlightReservationBase {
     }
 
     public boolean[] getSteas() {
-        return steas;
+        return seats;
     }
 
-    public void setSteas(boolean[] steas) {
-        this.steas = steas;
+    public void setSteas(boolean[] seats) {
+        this.seats = seats;
     }
 
     public boolean[] initSeatsArray(int capacity){
