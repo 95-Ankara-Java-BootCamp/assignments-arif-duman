@@ -146,11 +146,11 @@ public abstract class FlightReservationBase {
         }
     }
 
-    public boolean[] getSteas() {
+    public boolean[] getSeats() {
         return seats;
     }
 
-    public void setSteas(boolean[] seats) {
+    public void setSeats(boolean[] seats) {
         this.seats = seats;
     }
 
